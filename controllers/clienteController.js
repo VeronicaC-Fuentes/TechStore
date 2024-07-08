@@ -19,6 +19,15 @@ exports.obtenerCliente = async (req, res) => {
   }
 };
 
+exports.obtenerClientes = async (req, res) => {
+  try {
+    const clientes = await Cliente.findAll();
+    res.status(200).json(clientes);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
 exports.actualizarCliente = async (req, res) => {
   try {
     await Cliente.update(req.body, { where: { id: req.params.id } });

@@ -19,6 +19,16 @@ exports.obtenerProducto = async (req, res) => {
   }
 };
 
+exports.obtenerProductos = async (req, res) => {
+  try {
+    const productos = await Producto.findAll();
+    res.status(200).json(productos);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
 exports.actualizarProducto = async (req, res) => {
   try {
     await Producto.update(req.body, { where: { id: req.params.id } });

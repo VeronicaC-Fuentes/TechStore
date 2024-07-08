@@ -19,6 +19,16 @@ exports.obtenerOrden = async (req, res) => {
   }
 };
 
+exports.obtenerOrdenes = async (req, res) => {
+  try {
+    const ordenes = await Orden.findAll();
+    res.status(200).json(ordenes);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+
 exports.actualizarOrden = async (req, res) => {
   try {
     await Orden.update(req.body, { where: { id: req.params.id } });
