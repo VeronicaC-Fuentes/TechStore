@@ -1,6 +1,6 @@
 // models/orden.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = process.env.NODE_ENV === 'test' ? require('../config/databaseTest') : require('../config/database');
 
 const Orden = sequelize.define('Orden', {
   idCliente: DataTypes.INTEGER,

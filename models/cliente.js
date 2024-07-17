@@ -1,6 +1,6 @@
 // models/cliente.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = process.env.NODE_ENV === 'test' ? require('../config/databaseTest') : require('../config/database');
 
 const Cliente = sequelize.define('Cliente', {
   nombre: DataTypes.STRING,
@@ -10,3 +10,5 @@ const Cliente = sequelize.define('Cliente', {
 });
 
 module.exports = Cliente;
+
+

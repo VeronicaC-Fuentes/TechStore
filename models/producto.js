@@ -1,6 +1,6 @@
 // models/producto.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = process.env.NODE_ENV === 'test' ? require('../config/databaseTest') : require('../config/database');
 
 const Producto = sequelize.define('Producto', {
   nombre: DataTypes.STRING,
@@ -11,5 +11,3 @@ const Producto = sequelize.define('Producto', {
 });
 
 module.exports = Producto;
-
-
